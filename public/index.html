@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- Mostrar Datos con fetch y axios de una api publica -->
+    <section>
+        <table id="tbeP1"></table>
+    </section>
+
+    <!-- Enviar datos de un formulario a una api privada -->
+    <section>
+        <form id="form">
+            <input type="text" id="nombre" required placeholder="Ingresa el nombre">
+            <input type="email" id="email" required placeholder="Ingresa el email">
+            <button type="sumbit">Enviar Datos</button>
+        </form>
+    </section>
+
+    <!-- Mostrar datos de la api privada -->
+    <section>
+        <input type="text" id="filter" placeholder="Filtrar personas">
+        <table id="tbeP3"></table>
+    </section>
+
+    <section>
+        <table id="tbeP4"></table>
+    </section>
+</body>
+<script type="module" src="./script.js"></script>
+
+</html>
