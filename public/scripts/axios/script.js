@@ -25,9 +25,9 @@ export async function enviarDatosAxios(url, datos) {
                     'Content-Type': 'application/json',
                 },
             }
-        );
+        )
         return res.data
     } catch (err) {
-        console.error("Error:", err);
+        console.error("Error:", err)
     }
 }

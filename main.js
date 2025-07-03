@@ -5,21 +5,36 @@ import cargarPersona from "./scripts/cargarPersona.js"
 import cargarPersonas from "./scripts/cargarPersonas.js"
 import Alumno from "./classAlumno.js"
 
+//Inicializamos variables y constantes
 const app = express()
 const port = 3000
 const urlApiPublica = "https://jsonplaceholder.typicode.com/users"
-let personasPrivadas = []
-let alumnos = [
-  new Alumno("Juan", "Pérez", "12345678", "3A", "0001"),
-  new Alumno("María", "Gómez", "23456789", "3A", "0002"),
-  new Alumno("Lucía", "Martínez", "34567890", "3B", "0003"),
-  new Alumno("Pedro", "Sánchez", "45678901", "4A", "0004"),
-  new Alumno("Ana", "López", "56789012", "4B", "0005")
-];
+let personasPrivadas = [
+    cargarPersona("EmilSo", "TaVAarez@yahoo.com"),
+    cargarPersona("TomáAs", "RodRígueEz@gmail.com"),
+    cargarPersona("Alberto", "LóPez@yahoo.com"),
+    cargarPersona("IgnaCio", "GuZmán@hotmail.com"),
+    cargarPersona("QuiNto", "LázarEz@gmail.com"),
+    cargarPersona("AnToNio", "ReSaTe@yahoo.com"),
+    cargarPersona("EsTeBan", "HerNán@gmail.com"),
+    cargarPersona("HeRnan", "SiLas@yahoo.com"),
+    cargarPersona("SiNa", "CháTiz@gmail.com"),
+    cargarPersona("GaBrieL", "PeRézToRres@hotmail.com")
+]
 
+let alumnos = [
+    new Alumno("Juan", "Pérez", "12345678", "3A", "0001"),
+    new Alumno("María", "Gómez", "23456789", "3A", "0002"),
+    new Alumno("Lucía", "Martínez", "34567890", "3B", "0003"),
+    new Alumno("Pedro", "Sánchez", "45678901", "4A", "0004"),
+    new Alumno("Ana", "López", "56789012", "4B", "0005")
+]
+
+//Middlewares
 app.use(express.json())
 app.use(express.static("public"))
 
+//Inicializamos en servidor 
 app.listen(port, () => {
     console.log("http://localhost:3000/")
 })
@@ -56,13 +71,13 @@ app.get("/api/publica/axios/obtener/personas", (req, res) => {
 app.post("/api/privada/enviar/personas", (req, res) => {
     try {
         const data = req.body
-        const persona = cargarPersona(data.nombre, data.email);
+        const persona = cargarPersona(data.nombre, data.email)
         personasPrivadas.push(persona)
-        res.status(200).json({ mensaje: "Persona recibida correctamente" });
+        res.status(200).json({ mensaje: "Persona recibida correctamente" })
     }
     catch (err) {
         console.log("Error: " + err)
-        res.status(500).json({ error: "Error interno del servidor" });
+        res.status(500).json({ error: "Error interno del servidor" })
     }
 })
 
@@ -76,12 +91,13 @@ app.get("/api/privada/obtener/personas", (req, res) => {
     }
 })
 
-app.get("/api/alumnos", (req, res) =>{
-    try{
+//envia los datos del array de objetos de alumnos
+app.get("/api/alumnos", (req, res) => {
+    try {
         res.send(alumnos)
 
     }
-    catch(err){
-        console.log("Error: "+err)
+    catch (err) {
+        console.log("Error: " + err)
     }
 })

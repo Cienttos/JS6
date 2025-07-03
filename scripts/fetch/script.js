@@ -1,9 +1,9 @@
 //Metodo GET
 export async function oDFg(url) {
     try {
-        const res = await fetch(url);
-        const data = await res.json();
-        return data;
+        const res = await fetch(url)
+        const data = await res.json()
+        return data
     }
     catch (err) {
         console.log("error: " + err)
@@ -19,9 +19,9 @@ export async function oDFp(url) {
                 'Content-Type': 'application/json'
             },
             body: "{}"
-        });
-        const data = await res.json();
-        return res;
+        })
+        const data = await res.json()
+        return res
     }
     catch (err) {
         console.log("error: " + err)

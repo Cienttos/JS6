@@ -2,37 +2,97 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>API Tasks</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <!-- Mostrar Datos con fetch y axios de una api publica -->
-    <section>
-        <table id="tbeP1"></table>
-    </section>
+<body
+  class="min-h-screen bg-blue-50 flex flex-col items-center justify-start gap-10 py-12 px-6 font-sans text-blue-900">
 
-    <!-- Enviar datos de un formulario a una api privada -->
-    <section>
-        <form id="form">
-            <input type="text" id="nombre" required placeholder="Ingresa el nombre">
-            <input type="email" id="email" required placeholder="Ingresa el email">
-            <button type="sumbit">Enviar Datos</button>
-        </form>
-    </section>
+  <!-- Menu de navegacion para mostrar los distintos puntos -->
+  <nav class="flex gap-5 flex-wrap justify-center max-w-xl w-full" role="navigation" aria-label="API task navigation">
+    <button id="bp1" class="bg-white text-blue-700 border border-blue-300 px-6 py-3 rounded-lg shadow-sm 
+             hover:bg-blue-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 
+             transition-transform duration-300 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
+      aria-controls="s1" aria-selected="false" role="tab">Punto 1</button>
+    <button id="bp2" class="bg-white text-blue-700 border border-blue-300 px-6 py-3 rounded-lg shadow-sm 
+             hover:bg-blue-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400
+             transition-transform duration-300 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
+      aria-controls="s2" aria-selected="false" role="tab">Punto 2</button>
+    <button id="bp3" class="bg-white text-blue-700 border border-blue-300 px-6 py-3 rounded-lg shadow-sm 
+             hover:bg-blue-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400
+             transition-transform duration-300 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
+      aria-controls="s3" aria-selected="false" role="tab">Punto 3</button>
+    <button id="bp4" class="bg-white text-blue-700 border border-blue-300 px-6 py-3 rounded-lg shadow-sm 
+             hover:bg-blue-100 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400
+             transition-transform duration-300 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
+      aria-controls="s4" aria-selected="false" role="tab">Punto 4</button>
+  </nav>
 
-    <!-- Mostrar datos de la api privada -->
-    <section>
-        <input type="text" id="filter" placeholder="Filtrar personas">
-        <table id="tbeP3"></table>
-    </section>
+  <!-- Primer punto -->
+  <section id="s1" class="mx-auto text-center w-full max-w-3xl bg-white p-8 rounded-xl shadow-sm border border-blue-100 hidden text-left space-y-6
+           animate-fadeIn" role="tabpanel" aria-labelledby="bp1">
+    <h2 class="text-2xl font-semibold text-blue-800">1- Obtener datos de una API pública</h2>
+    <p class="text-blue-700 leading-relaxed">
+      Usar <code class="bg-blue-100 px-1 rounded">fetch</code> y luego <code
+        class="bg-blue-100 px-1 rounded">axios</code> para obtener datos del Link y mostrar los nombres y emails de los
+      usuarios en pantalla.
+    </p>
+    <table id="tbeP1" class="w-full text-left table-auto border-t border-blue-100"></table>
+  </section>
 
-    <section>
-        <table id="tbeP4"></table>
-    </section>
+  <!-- Segundo punto -->
+  <section id="s2" class="mx-auto text-center w-full max-w-3xl bg-white p-8 rounded-xl shadow-sm border border-blue-100 hidden text-left space-y-6
+           animate-fadeIn" role="tabpanel" aria-labelledby="bp2">
+    <h2 class="text-2xl font-semibold text-blue-800">2- Crear un formulario HTML con campos nombre y email</h2>
+    <p class="text-blue-700 leading-relaxed">
+      Al enviar, usar <code class="bg-blue-100 px-1 rounded">axios.post()</code> o <code
+        class="bg-blue-100 px-1 rounded">fetch</code> con método POST.
+      Mostrar el ID de respuesta que devuelve la API.<br />
+      <strong>Nota:</strong> Los datos enviados aquí se pueden ver en el siguiente punto.
+    </p>
+    <form id="form" class="mx-auto text-center flex flex-col gap-5 max-w-md">
+      <input type="text" id="nombre" required placeholder="Ingresa el nombre" class="p-3 border border-blue-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300
+               transition duration-300 ease-in-out" />
+      <input type="email" id="email" required placeholder="Ingresa el email" class="p-3 border border-blue-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300
+               transition duration-300 ease-in-out" />
+      <button type="submit"
+        class="bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-400 transition-transform duration-300 ease-in-out hover:-translate-y-0.5 active:translate-y-0">
+        Enviar Datos
+      </button>
+    </form>
+  </section>
+
+  <!-- Tercer punto -->
+  <section id="s3" class="mx-auto text-center w-full max-w-3xl bg-white p-8 rounded-xl shadow-sm border border-blue-100 hidden text-left space-y-6
+           animate-fadeIn" role="tabpanel" aria-labelledby="bp3">
+    <h2 class="text-2xl font-semibold text-blue-800">3- Obtener todos los usuarios de una API</h2>
+    <p class="text-blue-700 leading-relaxed">
+      Crear un campo de texto que permita buscar por nombre. Al escribir, filtrar el array obtenido y mostrar solo los
+      que coinciden.
+    </p>
+    <input type="text" id="filter" placeholder="Filtrar personas"
+      class="w-full p-3 mb-6 border border-blue-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300 ease-in-out" />
+    <table id="tbeP3" class="w-full text-left table-auto border-t border-blue-100"></table>
+  </section>
+
+  <!-- Cuarto punto -->
+  <section id="s4" class="mx-auto text-center w-full max-w-3xl bg-white p-8 rounded-xl shadow-sm border border-blue-100 hidden text-left space-y-6
+           animate-fadeIn" role="tabpanel" aria-labelledby="bp4">
+    <h2 class="text-2xl font-semibold text-blue-800">4- Crear una API simple</h2>
+    <p class="text-blue-700 leading-relaxed">
+      Crear una API simple (como <code class="bg-blue-100 px-1 rounded">/api/alumnos</code>) con PHP o Node.js o etc.
+      Mostrar los datos en pantalla.
+    </p>
+    <table id="tbeP4" class="w-full text-left table-auto border-t border-blue-100"></table>
+  </section>
+  <script type="module" src="./script.js"></script>
 </body>
-<script type="module" src="./script.js"></script>
 
 </html>

@@ -9,7 +9,7 @@ export default class Persona {
             console.log("/ Nombre: " + this.nombre + " - Email: " + this.email + " /")
         }
         catch (err) {
-            console.log("error: " + err)
+            console.log("Error: " + err)
         }
     }
 }
